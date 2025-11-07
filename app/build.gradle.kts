@@ -53,6 +53,7 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.retrofit)
     implementation(libs.gson)
+    implementation(libs.coil.compose)
 
 
     testImplementation(libs.junit)
