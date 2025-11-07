@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.compose.naavigation)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
 
 
     testImplementation(libs.junit)
