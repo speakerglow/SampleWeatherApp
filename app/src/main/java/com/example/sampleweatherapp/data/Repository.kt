@@ -1,7 +1,7 @@
 package com.example.sampleweatherapp.data
 
 import com.example.sampleweatherapp.domain.WeatherResponse
-import com.example.sampleweatherapp.network.ApiService
+import com.example.sampleweatherapp.data.ApiService
 
 class Repository(private val apiService: ApiService) {
 

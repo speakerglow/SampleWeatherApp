@@ -1,7 +1,7 @@
 package com.example.sampleweatherapp.di
 
-import com.example.sampleweatherapp.network.ApiKeyInterceptor
-import com.example.sampleweatherapp.network.ApiService
+import com.example.sampleweatherapp.data.ApiKeyInterceptor
+import com.example.sampleweatherapp.data.ApiService
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import org.koin.dsl.single
