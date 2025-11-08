@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SampleWeatherApp"
 include(":app")
+include(":core")
+include(":featureOne")
