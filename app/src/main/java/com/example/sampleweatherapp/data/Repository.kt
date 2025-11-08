@@ -1,4 +1,14 @@
 package com.example.sampleweatherapp.data
 
-class Repository {
+import com.example.sampleweatherapp.network.ApiService
+import javax.inject.Inject
+
+class Repository @Inject constructor(
+    private val apiService: ApiService
+) {
+
+    fun getForecast(): Boolean {
+        return true
+    }
+
 }

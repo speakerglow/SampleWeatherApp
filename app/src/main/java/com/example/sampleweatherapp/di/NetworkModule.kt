@@ -1,6 +1,5 @@
 package com.example.sampleweatherapp.di
 
-import com.example.sampleweatherapp.data.Repository
 import com.example.sampleweatherapp.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -12,13 +11,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.example.com/")
+            .baseUrl("https://api.weatherapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -28,5 +27,4 @@ object AppModule {
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
-
 }
