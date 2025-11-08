@@ -2,10 +2,14 @@ package com.example.sampleweatherapp.network
 
 import com.example.sampleweatherapp.domain.WeatherResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("cxcsa")
-    fun getForecast(): WeatherResponse
+    @GET("forecast.json")
+    suspend fun getForecast(
+        @Query("q") location: String,
+        @Query("days") days: Int
+    ): WeatherResponse
 
 }
