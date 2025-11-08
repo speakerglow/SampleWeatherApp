@@ -51,6 +51,12 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson)
 
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+//    implementation(libs.koin.androidx.viewmodel)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
