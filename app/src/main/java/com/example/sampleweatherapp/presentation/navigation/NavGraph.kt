@@ -1,4 +1,4 @@
-package com.example.sampleweatherapp.navigation
+package com.example.sampleweatherapp.presentation.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable

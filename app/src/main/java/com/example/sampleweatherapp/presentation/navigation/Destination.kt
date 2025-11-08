@@ -1,4 +1,4 @@
-package com.example.sampleweatherapp.navigation
+package com.example.sampleweatherapp.presentation.navigation
 
 sealed class Destination(val route: String) {
 
