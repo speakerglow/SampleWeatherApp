@@ -4,7 +4,10 @@ sealed class Destination(val route: String) {
 
     object ForecastScreen : Destination(FORECAST_DESTINATION)
 
-    object DetailsScreen: Destination(DAY_DETAILS_FORECAST_DESTINATION)
+    object DetailsScreen : Destination(DAY_DETAILS_FORECAST_DESTINATION) {
+        fun createRoute(position: Int) =
+            DAY_DETAILS_FORECAST_DESTINATION.replace("{position}", position.toString())
+    }
 
 
     companion object {

@@ -11,4 +11,14 @@
 
     <string name="precipitation">Precipitation %s</string>
 
+    <string name="time">Time %s</string>
+
+    <string name="humidity">Humidity %s</string>
+
+    <string name="wind">Wind speed %s</string>
+
+    <string name="details">Details</string>
+
+    <string name="forecast">Forecast</string>
+
 </resources>

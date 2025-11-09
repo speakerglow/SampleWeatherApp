@@ -1,23 +1,27 @@
 package com.example.sampleweatherapp.presentation.ui
 
-import androidx.compose.runtime.Composable
-import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
-import org.koin.androidx.compose.koinViewModel
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.example.sampleweatherapp.R
+import com.example.sampleweatherapp.domain.Hour
+import com.example.sampleweatherapp.presentation.presentationModels.WeatherIntent
+import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DetailsScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
-    position: Int?,
+    hours: List<Hour>?,
     back: () -> Unit
 ) {
 
@@ -28,10 +32,34 @@ fun DetailsScreen(
             .background(MaterialTheme.colorScheme.background)
             .systemBarsPadding()
     ) {
+        AppBar(
+            title = stringResource(R.string.forecast),
+            onBack = back,
+            modifier = Modifier.padding(horizontal = 24.dp)
+        )
 
-        AppBar(title = "Details", onBack = back)
+
+        if (hours == null) {
+            ErrorScreen(
+                message = stringResource(R.string.errorDefault),
+                onRetry = {
+                    viewModel.sendIntent(WeatherIntent.LoadForecast())
+                })
+        } else {
+
+            LazyRow {
+
+                items(hours!!.size, key = { hours[it].time_epoch }) { position ->
+
+                    HourItem(
+                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 16.dp),
+                        hour = hours[position]
+                    )
+
+                }
+            }
+        }
     }
-
 }
 
 

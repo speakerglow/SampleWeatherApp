@@ -25,7 +25,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ForecastScreen(
-    viewModel: MainViewModel = koinViewModel(),
+    viewModel: MainViewModel,
     onNavigateToDetails: (Int) -> Unit,
     back: () -> Unit
 ) {
@@ -34,10 +34,6 @@ fun ForecastScreen(
 
     BackHandler(onBack = back)
 
-    LaunchedEffect(Unit) {
-        viewModel.sendIntent(WeatherIntent.LoadForecast())
-    }
-
     Column(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.background)
@@ -45,7 +41,11 @@ fun ForecastScreen(
             .padding(horizontal = 24.dp)
     ) {
 
-        AppBar(title = "Details", onBack = back)
+        AppBar(
+            title = stringResource(R.string.forecast),
+            onBack = back,
+            refreshVisible = state.value.isLoading.not(),
+            refresh = { viewModel.sendIntent(WeatherIntent.LoadForecast()) })
 
         Box(modifier = Modifier.fillMaxSize()) {
 
@@ -77,12 +77,12 @@ fun ForecastScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun ForecastScreen_preview() {
-    SampleWeatherAppTheme {
-
-        ForecastScreen(onNavigateToDetails = {}, back = {})
-
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun ForecastScreen_preview() {
+//    SampleWeatherAppTheme {
+//
+//        ForecastScreen(onNavigateToDetails = {}, back = {})
+//
+//    }
+//}

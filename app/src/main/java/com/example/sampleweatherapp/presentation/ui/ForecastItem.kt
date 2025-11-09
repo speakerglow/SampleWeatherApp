@@ -69,7 +69,7 @@ fun ForecastItem(modifier: Modifier = Modifier, day: ForecastDay, onClick: () ->
                 error = painterResource(R.drawable.outline_broken_image_24),
                 fallback = painterResource(R.drawable.outline_broken_image_24),
                 contentDescription = null,
-                modifier = Modifier.size(32.dp),
+                modifier = Modifier.size(64.dp),
             )
         }
     }

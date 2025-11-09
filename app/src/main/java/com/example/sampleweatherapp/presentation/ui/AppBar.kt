@@ -17,16 +17,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sampleweatherapp.R
 import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
 
 @Composable
-fun AppBar(modifier: Modifier = Modifier, title: String, onBack: () -> Unit) {
+fun AppBar(
+    modifier: Modifier = Modifier,
+    title: String,
+    onBack: () -> Unit,
+    refresh: () -> Unit = {},
+    refreshVisible: Boolean = false
+) {
 
     Box(modifier = modifier.fillMaxWidth()) {
         IconButton(onClick = onBack) {
             Icon(
                 Icons.Default.ArrowBack,
-                contentDescription = "Back",
+                contentDescription = null,
                 modifier = Modifier.size(24.dp)
             )
         }
@@ -39,6 +46,18 @@ fun AppBar(modifier: Modifier = Modifier, title: String, onBack: () -> Unit) {
             textAlign = TextAlign.Center,
             fontSize = 24.sp
         )
+
+        if (refreshVisible) IconButton(
+            onClick = refresh,
+            modifier = Modifier.align(Alignment.CenterEnd)
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.baseline_refresh_24),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(24.dp)
+            )
+        }
     }
 
 }
@@ -48,7 +67,7 @@ fun AppBar(modifier: Modifier = Modifier, title: String, onBack: () -> Unit) {
 private fun AppBar_preview() {
     SampleWeatherAppTheme {
 
-        AppBar(title = "title") { }
+        AppBar(title = "title", onBack = {}, refreshVisible = true)
 
     }
 }
