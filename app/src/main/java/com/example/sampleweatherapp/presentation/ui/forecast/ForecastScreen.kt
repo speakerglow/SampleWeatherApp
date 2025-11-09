@@ -1,4 +1,4 @@
-package com.example.sampleweatherapp.presentation.ui
+package com.example.sampleweatherapp.presentation.ui.forecast
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -10,18 +10,16 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.sampleweatherapp.R
-import com.example.sampleweatherapp.domain.ForecastDay
 import com.example.sampleweatherapp.presentation.presentationModels.WeatherIntent
-import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
+import com.example.sampleweatherapp.presentation.ui.components.AppBar
+import com.example.sampleweatherapp.presentation.ui.components.ErrorScreen
+import com.example.sampleweatherapp.presentation.ui.components.LoadingScreen
 import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ForecastScreen(

@@ -10,6 +10,8 @@ import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.runtime.collectAsState
 import com.example.sampleweatherapp.presentation.presentationModels.WeatherIntent
+import com.example.sampleweatherapp.presentation.ui.details.DetailsScreen
+import com.example.sampleweatherapp.presentation.ui.forecast.ForecastScreen
 
 @Composable
 fun MainScreen() {

@@ -1,4 +1,4 @@
-package com.example.sampleweatherapp.presentation.ui
+package com.example.sampleweatherapp.presentation.ui.details
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import com.example.sampleweatherapp.R
 import com.example.sampleweatherapp.domain.Hour
 import com.example.sampleweatherapp.presentation.presentationModels.WeatherIntent
+import com.example.sampleweatherapp.presentation.ui.components.AppBar
+import com.example.sampleweatherapp.presentation.ui.components.ErrorScreen
 import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 
