@@ -9,7 +9,7 @@ sealed class Destination(val route: String) {
 
     companion object {
 
-        private const val DAY_DETAILS_FORECAST_DESTINATION = "day_details_destination"
+        private const val DAY_DETAILS_FORECAST_DESTINATION = "day_details_destination/{position}"
         private const val FORECAST_DESTINATION = "forecast_destination"
 
     }

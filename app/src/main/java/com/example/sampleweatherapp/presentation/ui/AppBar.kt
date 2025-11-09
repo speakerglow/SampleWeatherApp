@@ -1,5 +1,6 @@
 package com.example.sampleweatherapp.presentation.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -21,7 +22,7 @@ import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
 @Composable
 fun AppBar(modifier: Modifier = Modifier, title: String, onBack: () -> Unit) {
 
-    Row(modifier = modifier.fillMaxWidth()) {
+    Box(modifier = modifier.fillMaxWidth()) {
         IconButton(onClick = onBack) {
             Icon(
                 Icons.Default.ArrowBack,
@@ -33,7 +34,7 @@ fun AppBar(modifier: Modifier = Modifier, title: String, onBack: () -> Unit) {
         Text(
             text = title,
             modifier = Modifier
-                .align(Alignment.CenterVertically)
+                .align(Alignment.Center)
                 .fillMaxWidth(),
             textAlign = TextAlign.Center,
             fontSize = 24.sp

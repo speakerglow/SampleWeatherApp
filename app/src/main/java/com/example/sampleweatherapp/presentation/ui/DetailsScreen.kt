@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 import com.example.sampleweatherapp.presentation.viewModel.MainViewModel
 import org.koin.androidx.compose.koinViewModel
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
@@ -15,6 +17,7 @@ import com.example.sampleweatherapp.presentation.theme.SampleWeatherAppTheme
 fun DetailsScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
+    position: Int?,
     back: () -> Unit
 ) {
 
@@ -22,6 +25,7 @@ fun DetailsScreen(
 
     Column(
         modifier = modifier
+            .background(MaterialTheme.colorScheme.background)
             .systemBarsPadding()
     ) {
 
@@ -31,12 +35,12 @@ fun DetailsScreen(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun DetailsScreen_preview() {
-    SampleWeatherAppTheme {
-
-        DetailsScreen { }
-
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun DetailsScreen_preview() {
+//    SampleWeatherAppTheme {
+//
+//        DetailsScreen { }
+//
+//    }
+//}

@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.compose.navigation)
     implementation(libs.retrofit)
     implementation(libs.gson)
+    implementation(libs.coil.compose)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)

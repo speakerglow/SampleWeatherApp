@@ -4,14 +4,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 
 @Composable
 fun NavGraph(
     navHostController: NavHostController,
     forecastScreen: @Composable () -> Unit,
-    detailsScreen: @Composable () -> Unit
+    detailsScreen: @Composable (Int?) -> Unit
 ) {
 
     NavHost(
@@ -24,10 +26,12 @@ fun NavGraph(
             forecastScreen()
         }
 
-        composable(route = Destination.DetailsScreen.route) {
-            detailsScreen()
+        composable(
+            route = Destination.DetailsScreen.route,
+            arguments = listOf(navArgument("position") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val position = backStackEntry.arguments?.getInt("position")
+            detailsScreen(position)
         }
-
     }
-
 }

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SampleWeatherApp</string>
+
+    <string name="tryAgain">Try again</string>
+
+    <string name="errorDefault">Something went wrong</string>
+
+    <string name="date">Date %s</string>
+
+    <string name="temperaure">Temperature %s</string>
+
+    <string name="precipitation">Precipitation %s</string>
+
 </resources>
