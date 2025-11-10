@@ -2,10 +2,13 @@ package com.example.sampleweatherapp.presentation.ui.details
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,17 +22,30 @@ import com.example.sampleweatherapp.R
 import com.example.sampleweatherapp.domain.Hour
 
 @Composable
-fun HourItem(modifier: Modifier = Modifier, hour: Hour) {
+fun HourItem(
+    modifier: Modifier = Modifier,
+    hour: Hour?,
+    extendedInfo: Boolean = false,
+    onClick: (Hour) -> Unit
+) {
+
+    if (hour == null) return
 
     Card(
-        modifier = modifier
-            .background(
-                color = MaterialTheme.colorScheme.onBackground,
-                shape = RoundedCornerShape(14.dp)
-            )
+        modifier = modifier,
+        colors = CardDefaults.cardColors(contentColor = MaterialTheme.colorScheme.onBackground),
+        shape = RoundedCornerShape(14.dp),
+        onClick = {
+            onClick(hour)
+        }
     ) {
 
-        Column(modifier = Modifier.padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier
+                .padding(8.dp)
+                .then(if (extendedInfo) Modifier.fillMaxWidth() else Modifier),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
             AsyncImage(
                 model = "https:${hour.condition.icon}",
@@ -37,7 +53,8 @@ fun HourItem(modifier: Modifier = Modifier, hour: Hour) {
                 error = painterResource(R.drawable.outline_broken_image_24),
                 fallback = painterResource(R.drawable.outline_broken_image_24),
                 contentDescription = null,
-                modifier = Modifier.size(60.dp)
+                modifier = Modifier
+                    .size(60.dp)
                     .padding(vertical = 4.dp),
             )
 
@@ -53,18 +70,25 @@ fun HourItem(modifier: Modifier = Modifier, hour: Hour) {
                 modifier = Modifier.padding(vertical = 4.dp)
             )
 
-            Text(
-                text = stringResource(R.string.humidity, hour.humidity),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(vertical = 4.dp)
-            )
+            if (extendedInfo) {
+                Text(
+                    text = stringResource(R.string.humidity, hour.humidity),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
 
-            Text(
-                text = stringResource(R.string.wind, hour.wind_kph),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(vertical = 4.dp)
-            )
+                Text(
+                    text = stringResource(R.string.wind, hour.wind_kph),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
 
+                Text(
+                    text = "Feels like ${hour.feelslike_c}",
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
+            }
         }
 
     }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,11 +27,9 @@ fun ForecastItem(modifier: Modifier = Modifier, day: ForecastDay, onClick: () ->
 
     Card(
         modifier = modifier
-            .fillMaxWidth()
-            .background(
-                color = MaterialTheme.colorScheme.onBackground,
-                shape = RoundedCornerShape(20.dp)
-            ),
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(contentColor = MaterialTheme.colorScheme.onBackground),
+        shape = RoundedCornerShape(20.dp),
         onClick = onClick
     ) {
 
